@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kshopings": {
+      "hosting": {
+        "kshopings": [
+          "kshopings"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kshopings"
+  }
+}

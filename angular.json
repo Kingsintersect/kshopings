@@ -30,6 +30,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -97,8 +98,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "kshopings:build:production",
+            "firebaseProject": "kshopings",
+            "firebaseHostingSite": "kshopings"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
