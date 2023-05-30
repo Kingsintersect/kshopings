@@ -13,6 +13,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { adminAuthGuard, authGuard } from './functions/auth.guard';
+import { ProductFormComponent } from './admin/component/product-form/product-form.component';
 
 const routes: Routes = [
   
@@ -47,6 +48,11 @@ const routes: Routes = [
   { 
     path: 'admin/products', 
     component: AdminProductsComponent, 
+    // canActivate: [authGuard, adminAuthGuard] 
+  },
+  { 
+    path: 'admin/product-form', 
+    component: ProductFormComponent, 
     // canActivate: [authGuard, adminAuthGuard] 
   },
   { 

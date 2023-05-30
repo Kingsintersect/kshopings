@@ -11,6 +11,7 @@ import { UserService } from './services/user.service';
 export class AppComponent {
   title = 'kshopings';
 
+
   constructor(private userService: UserService, private auth: AuthService, private router: Router) {
     auth.currentUser$.subscribe(user => {
       if(user) {
