@@ -14,6 +14,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { adminAuthGuard, authGuard } from './functions/auth.guard';
 import { ProductFormComponent } from './admin/component/product-form/product-form.component';
+import { TableComponent } from './admin/component/table/table.component';
 
 const routes: Routes = [
   
@@ -46,18 +47,28 @@ const routes: Routes = [
   
   // ADMIN USERS
   { 
+    path: 'admin/products/new', 
+    component: ProductFormComponent, 
+    // canActivate: [authGuard, adminAuthGuard] 
+  },
+  { 
+    path: 'admin/products/:id', 
+    component: ProductFormComponent, 
+    // canActivate: [authGuard, adminAuthGuard] 
+  },
+  { 
     path: 'admin/products', 
     component: AdminProductsComponent, 
     // canActivate: [authGuard, adminAuthGuard] 
   },
   { 
-    path: 'admin/product-form', 
-    component: ProductFormComponent, 
+    path: 'admin/orders', 
+    component: AdminOrdersComponent, 
     // canActivate: [authGuard, adminAuthGuard] 
   },
   { 
-    path: 'admin/orders', 
-    component: AdminOrdersComponent, 
+    path: 'admin/table', 
+    component: TableComponent, 
     // canActivate: [authGuard, adminAuthGuard] 
   },
 ];

@@ -27,22 +27,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './services/auth-guard.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { UserService } from './services/user.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ProductFormComponent } from './admin/component/product-form/product-form.component';
-import {MatIconModule} from '@angular/material/icon'; 
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatToolbarModule} from '@angular/material/toolbar';
 import { MuiNavbarComponent } from './components/mui-navbar/mui-navbar.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { CategoryService } from './services/category.service';
+import { ProductService } from './services/product.service';
+import { MaterialModule } from './material.module';
+
+
+
 
 @NgModule({
   declarations: [
@@ -60,7 +53,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     SignInComponent,
     SignUpComponent,
     ProductFormComponent,
-    MuiNavbarComponent
+    MuiNavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,25 +67,16 @@ import {MatGridListModule} from '@angular/material/grid-list';
     NgbModule,
     HotToastModule.forRoot(),
 
-    // MATERIAL UI MODULES
-    MatToolbarModule,
-    MatIconModule,
-    MatFormFieldModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCardModule,
-    MatSidenavModule,
-    MatListModule,
-    MatGridListModule
+    // MATERIAL MODULE
+    MaterialModule,
   ],
   providers: [
     AuthService,
     AuthGuard,
     AdminAuthGuard,
     UserService,
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
