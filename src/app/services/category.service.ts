@@ -17,7 +17,7 @@ export class CategoryService {
     this.collectionInstance = collection(this.fs, 'categories');
   }
 
-  getCategories()  {
+  getAll()  {
     this.categoryData = collectionData(this.collectionInstance, {idField: 'id'});
     return this.categoryData
   }

@@ -1,0 +1,12 @@
+<div class="product-filter sticky-top">
+    <h1>Categories</h1>
+    <mat-nav-list>
+        <a mat-list-item routerLink="/"  [activated]="!category">All Categories</a>
+        <a mat-list-item 
+            routerLink="/" 
+            [queryParams]="{ category: c.id }"  
+            *ngFor="let c of categories$ | async" 
+            [activated]="c.isActive"
+        >{{ c.name }}</a>
+    </mat-nav-list>   
+</div> 

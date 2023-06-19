@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
@@ -18,7 +18,6 @@ export class ProductFormComponent {
   private fb = inject(FormBuilder);
 
   productForm = this.fb.group({
-    // name: [null, [Validators.required, Validators.minLength(4)]],
     title: [null, Validators.required],
     price: [null, [Validators.required, Validators.minLength(4),]],
     category: [null, Validators.required],
@@ -27,7 +26,14 @@ export class ProductFormComponent {
 
   id: string|null;
   categories$: any = [];
-  products: any = {};
+  product: any = {};  
+  @Input('show-actions') showActions = true;
+  
+  // GETTERS FOR THIS FORM
+  get title() { return this.productForm.get('title')!; }
+  get price() { return this.productForm.get('price')!; }
+  get category() { return this.productForm.get('category')!; }
+  get imgUrl() { return this.productForm.get('imgUrl')!; }
 
   constructor(
     private route: ActivatedRoute,
@@ -35,20 +41,13 @@ export class ProductFormComponent {
     private catService: CategoryService, 
     private productService: ProductService){
 
-    this.categories$ = catService.getCategories();
+    this.categories$ = catService.getAll();
 
     this.id = route.snapshot.paramMap.get('id');
     if (this.id) this.productService.getOneById(this.id)
       .pipe(take(1))
-        .subscribe( p => this.products = p)
+        .subscribe( p => this.product = p)
   }
-
-  // GETTERS FOR THIS FORM
-  // get name() { return this.productForm.get('name')!; }
-  get title() { return this.productForm.get('title')!; }
-  get price() { return this.productForm.get('price')!; }
-  get category() { return this.productForm.get('category')!; }
-  get imgUrl() { return this.productForm.get('imgUrl')!; }
 
   save(): void {
     if (!this.productForm.valid) return;

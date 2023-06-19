@@ -14,12 +14,11 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { adminAuthGuard, authGuard } from './functions/auth.guard';
 import { ProductFormComponent } from './admin/component/product-form/product-form.component';
-import { TableComponent } from './admin/component/table/table.component';
 
 const routes: Routes = [
   
     // ANONYMOUS USERS
-    { path: '', component: HomeComponent },
+    { path: '', component: ProductsComponent },
     { path: 'home', component: HomeComponent },
     { path: 'products', component: ProductsComponent },
     { path: 'shopping-cart', component: ShoppingCartComponent },
@@ -64,11 +63,6 @@ const routes: Routes = [
   { 
     path: 'admin/orders', 
     component: AdminOrdersComponent, 
-    // canActivate: [authGuard, adminAuthGuard] 
-  },
-  { 
-    path: 'admin/table', 
-    component: TableComponent, 
     // canActivate: [authGuard, adminAuthGuard] 
   },
 ];

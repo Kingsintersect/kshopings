@@ -1,0 +1,16 @@
+<mat-card *ngIf="product.title" class="product-card">
+    <img mat-card-image [src]="product.imgUrl"  alt="{{product.title}}" *ngIf="product.imgUrl">
+    <mat-card-content>
+        <mat-card-title>{{product.title}}</mat-card-title>
+        <p>
+            {{product.price | currency: "USD"}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+    </mat-card-actions>
+    <mat-card-footer>
+        <button class="block-level" mat-flat-button *ngIf="showActions" color="primary">ADD TO CART</button>
+    </mat-card-footer>
+</mat-card>

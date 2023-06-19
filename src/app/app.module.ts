@@ -33,6 +33,9 @@ import { MuiNavbarComponent } from './components/mui-navbar/mui-navbar.component
 import { CategoryService } from './services/category.service';
 import { ProductService } from './services/product.service';
 import { MaterialModule } from './material.module';
+import {MatMenuModule} from '@angular/material/menu';
+import { ProductFilterComponent } from './reused-components/product-filter/product-filter.component';
+import { ProductCardComponent } from './reused-components/product-card/product-card.component';
 
 
 
@@ -54,6 +57,8 @@ import { MaterialModule } from './material.module';
     SignUpComponent,
     ProductFormComponent,
     MuiNavbarComponent,
+    ProductFilterComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +74,7 @@ import { MaterialModule } from './material.module';
 
     // MATERIAL MODULE
     MaterialModule,
+    MatMenuModule,
   ],
   providers: [
     AuthService,
