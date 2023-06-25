@@ -36,6 +36,8 @@ import { MaterialModule } from './material.module';
 import {MatMenuModule} from '@angular/material/menu';
 import { ProductFilterComponent } from './reused-components/product-filter/product-filter.component';
 import { ProductCardComponent } from './reused-components/product-card/product-card.component';
+import { ShoppingCartService } from './services/shopping-cart.service';
+import { ToastComponent } from './components/helpers/toast/toast.component';
 
 
 
@@ -59,6 +61,7 @@ import { ProductCardComponent } from './reused-components/product-card/product-c
     MuiNavbarComponent,
     ProductFilterComponent,
     ProductCardComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +85,8 @@ import { ProductCardComponent } from './reused-components/product-card/product-c
     AdminAuthGuard,
     UserService,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService,
   ],
   bootstrap: [AppComponent]
 })
