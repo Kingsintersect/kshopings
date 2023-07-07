@@ -1,26 +1,51 @@
 import { Injectable } from '@angular/core';
-import { CollectionReference, DocumentData, Firestore, addDoc, collection, doc, docData, setDoc, updateDoc } from '@angular/fire/firestore';
+import { CollectionReference, DocumentData, DocumentReference, Firestore, addDoc, collection, deleteField, doc, docData, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
 import { Product } from '../model/product';
-import { take } from 'rxjs';
+import { Observable, map, take } from 'rxjs';
+import { SnackbarService } from './helpers/snackbar.service';
+import { ShoppingCart } from '../model/shopping-cart';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService {
   private collectionInstance: CollectionReference<DocumentData>;
+  // private cartRef = 
 
-  constructor(private fs: Firestore) { 
+  constructor(private fs: Firestore, private snackBar: SnackbarService) { 
     this.collectionInstance = collection(this.fs, 'shopping-carts')
+  }
+
+
+  async getCart(): Promise<Observable<ShoppingCart>> {
+    let cartId = await this.getOrCreateCartId();
+    const docRef = doc(this.fs, "shopping-carts", cartId);
+    let res =  docData(docRef) as Observable<ShoppingCart>
+    return res.pipe(
+      map(x => new ShoppingCart(x.items))
+    );
+  }
+
+  async addToCart (product: Product) {
+    this.updateItem(product, 1);
+  }
+
+  async removeFromCart(product: Product){
+    this.updateItem(product, -1);
+  }
+  
+  async clearCart(){
+    let cartId = await this.getOrCreateCartId();
+    const removeItem = { items: deleteField() };
+    let docRef = doc(this.fs, "shopping-carts", cartId);
+    updateDoc(docRef, removeItem);
+  }
+  async checkout() {
+    return 'checking out...';
   }
 
   private create() {
     return addDoc(this.collectionInstance, {dateCreated: new Date().getTime()})
-  }
-
-  async getCart() {
-    let cartId = await this.getOrCreateCartId();
-    const docRef = doc(this.fs, "shopping-carts", cartId);
-    return docData(docRef)
   }
 
   private async getOrCreateCartId(): Promise<string> {
@@ -32,35 +57,32 @@ export class ShoppingCartService {
     return result.id;
   }
 
-  async addToCart (product: Product) {
-    this.updateItemQuantity(product, 1);
+  private async getItem(cartId: string) {
+    const docRef = doc(this.fs, "shopping-carts", cartId);
+    return getDoc(docRef).then(x => x.data())
   }
 
-  async removeFromCart(product: Product){
-    this.updateItemQuantity(product, -1);
-  }
-
-  private async updateItemQuantity(product: Product, change: number){
+  private async updateItem(product: Product, change: number) {
     let cartId = await this.getOrCreateCartId();
+    let cartData = await this.getItem(cartId);
+    let refPath = `items.${product.id}`;
+    let quantity = ( cartData!['items'] && cartData!['items'][product.id] )? cartData!['items'][product.id]['quantity'] : 0;
 
     const docRef = doc(this.fs, "shopping-carts", cartId);
-    docData(docRef).pipe(
-      take(1)
-    )
-    .subscribe( item => {
-      if(item['items']) {
-        if(item['items'][product.id]){
-          let path = `items.${product.id}.quantity`;
-          updateDoc(docRef, { [path]: item['items'][product.id]['quantity'] + change });
-        }else{
-          let path = `items.${product.id}`;
-          updateDoc(docRef, { [path]: {product: product, quantity: change}});
-        }        
-      }else {
-        let path = `items`;
-        updateDoc(docRef, { [path]: {[product.id]: {product: product, quantity: change} } })
-      }
-    })
+
+    const removeItem = { [refPath]: deleteField() };
+    const updateItemField = { [refPath]: {
+      title: product.title,
+      imgUrl: product.imgUrl,
+      price: product.price,
+      category: product.category, 
+      quantity: quantity + change 
+    }}
+    
+    if(cartData!['items'] && cartData!['items'][product.id] && (quantity == 1) && (change == -1) ){  updateDoc(docRef, removeItem) }
+    else{
+      updateDoc(docRef, updateItemField);
+    }
   }
 
 }

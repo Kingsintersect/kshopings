@@ -10,28 +10,14 @@
         <button mat-button>LIKE</button>
         <button mat-button>SHARE</button>
     </mat-card-actions>
-    <mat-card-footer *ngIf="showActions" >
+    <mat-card-footer *ngIf="showActions && shoppingCart" >
         <button mat-stroked-button 
-            *ngIf="getQuantity() === 0; else updateQuantity"
+            *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity"
             (click)="addToCart()"
             class="block-level"
             >ADD TO CART</button>
         <ng-template #updateQuantity>
-            <div class="row g-0 mx-0">
-                <div class="col-3">
-                    <button mat-raised-button
-                        (click)="removeFromCart()"
-                    >-</button>
-                </div>
-                <div class="col text-center">
-                    <b>{{ getQuantity() }} in Cart</b>
-                </div>
-                <div class="col-3">
-                    <button mat-raised-button
-                        (click)="addToCart()"
-                    >+</button>
-                </div>
-            </div>
+            <product-quantity [product]="product" [shopping-cart]="shoppingCart"></product-quantity>
         </ng-template>
     </mat-card-footer>
 </mat-card>

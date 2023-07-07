@@ -14,6 +14,9 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table"; //TABLE MODEL
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
     exports: [
@@ -35,6 +38,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
         MatSidenavModule,
         MatListModule,
         MatGridListModule,
+        MatSnackBarModule,
+        MatDialogModule,
+        MatBadgeModule,
     ]
 })
 

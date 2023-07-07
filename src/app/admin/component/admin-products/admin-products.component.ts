@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ConfirmDeleteComponent } from 'src/app/components/dialogs/confirm-delete/confirm-delete.component';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -22,7 +24,7 @@ export class AdminProductsComponent implements OnDestroy, OnInit, AfterViewInit 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private router: Router, private dialog: MatDialog) {
     this.subscription = productService.getAll().subscribe( (products) => {
       this.products = products;
 
@@ -57,7 +59,7 @@ export class AdminProductsComponent implements OnDestroy, OnInit, AfterViewInit 
   }
 
   getRow(row: any) {
-    console.log(row)
+    // console.log(row)
   }
 
   editProduct(id: string){
@@ -65,6 +67,13 @@ export class AdminProductsComponent implements OnDestroy, OnInit, AfterViewInit 
   }
 
   deleteProduct(id: string){
+    this.dialog.open(ConfirmDeleteComponent, {
+      minWidth: '250px',
+      minHeight: '150px'
+    }).afterClosed().subscribe(res => {
+      console.log(res);
+    }); 
+    return;
     if(!confirm('Confirm You Want To Delete This Product?')) return;
     
     this.productService.delete(id);

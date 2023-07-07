@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { Auth, GoogleAuthProvider, User, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, updateProfile } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, from, switchMap } from 'rxjs';
+import { AppUser } from '../model/app-user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  currentUser$: Observable<User | null>
+  currentUser$!: Observable<AppUser | null>
 
   constructor( private auth: Auth, private route: ActivatedRoute) {
-    this.currentUser$ = authState(this.auth);
+    this.currentUser$ = authState(this.auth) as Observable<AppUser | null>;
    }
 
   signIn(username: string, password: string) {

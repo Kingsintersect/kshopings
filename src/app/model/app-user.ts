@@ -1,6 +1,7 @@
 export interface AppUser {
-    // uid: string
-    name: string;
-    email: string;
-    isAdmin: boolean;
+    uid: string,
+    id: string,
+    name: string,
+    email: string,
+    isAdmin: boolean,
 }

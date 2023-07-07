@@ -37,10 +37,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ProductFilterComponent } from './reused-components/product-filter/product-filter.component';
 import { ProductCardComponent } from './reused-components/product-card/product-card.component';
 import { ShoppingCartService } from './services/shopping-cart.service';
-import { ToastComponent } from './components/helpers/toast/toast.component';
-
-
-
+import { SnackbarService } from './services/helpers/snackbar.service';
+import { ProductQuantityComponent } from './reused-components/product-quantity/product-quantity.component';
+import { OrderService } from './services/order.service';
+import { ShoppingCartSummaryComponent } from './reused-components/shopping-cart-summary/shopping-cart-summary.component';
+import { ShoppingFormComponent } from './reused-components/shopping-form/shopping-form.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,9 @@ import { ToastComponent } from './components/helpers/toast/toast.component';
     MuiNavbarComponent,
     ProductFilterComponent,
     ProductCardComponent,
-    ToastComponent,
+    ProductQuantityComponent,
+    ShoppingCartSummaryComponent,
+    ShoppingFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +90,8 @@ import { ToastComponent } from './components/helpers/toast/toast.component';
     CategoryService,
     ProductService,
     ShoppingCartService,
+    SnackbarService,
+    OrderService,
   ],
   bootstrap: [AppComponent]
 })

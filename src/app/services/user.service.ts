@@ -14,9 +14,9 @@ export class UserService {
     return this.auth.currentUser$
       .pipe(
         switchMap(user => {
-          if(!user?.uid) return of(null)
+          if(!user?.id) return of(null)
 
-          const ref = doc(this.fs, 'users', user?.uid);
+          const ref = doc(this.fs, 'users', user?.id);
           return docData(ref) as Observable<AppUser>;
         })
       )

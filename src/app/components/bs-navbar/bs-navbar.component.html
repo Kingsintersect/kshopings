@@ -52,7 +52,15 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/shopping-cart">Shopping-cart</a>
+                        <a class="nav-link" routerLink="/shopping-cart">                            
+                            <div 
+                                matBadge="{{cart.totalItemsCount }}"
+                                matBadgeOverlap="false" 
+                                class="demo-section" 
+                                matBadgeColor="accent"
+                                *ngIf="cart$ | async as cart"
+                                >Shopping-cart</div>
+                        </a>
                     </li>
                     <ng-template #anonymousUser>
                         <li class="nav-item">

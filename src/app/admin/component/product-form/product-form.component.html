@@ -36,9 +36,9 @@
                     <div class="col">
                         <mat-form-field class="full-width">
                             <mat-label>Product Price</mat-label>
-                            <span matPrefix class="inline-block-20">$ &nbsp;</span>
                             <input matInput placeholder="Product Price" formControlName="price" required number minlength="4" [(ngModel)]="product.price">
-                            <mat-icon matSuffix>mode_edit</mat-icon>
+                            <span matTextPrefix>$&nbsp;</span>
+                            <span matTextSuffix>.00</span>
 
                             <mat-error *ngIf="price.errors?.['minlength']">
                                 Price must be a numbers.
