@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
 import { Firestore, doc, docData, setDoc, updateDoc } from '@angular/fire/firestore';
-import { AppUser } from '../../membership/model/app-user';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { User } from '@angular/fire/auth';
+import { AppUser } from '../model/app-user';
+import { AuthService } from 'sheard/services/auth.service';
 
 @Injectable({
   providedIn: 'root'

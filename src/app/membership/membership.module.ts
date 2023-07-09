@@ -1,12 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { SheardModule } from 'sheard/sheard.module';
+
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from 'app/app-routing.module';
-import { MatMenuModule } from '@angular/material/menu';
-import { MaterialModule } from 'app/material.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -17,13 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     CommonModule,
-    
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatMenuModule,
-    MaterialModule,
-    NgbModule,
+    SheardModule,
   ]
 })
 export class MembershipModule { }

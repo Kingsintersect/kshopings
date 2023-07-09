@@ -93,14 +93,15 @@
 
 
 
-<mat-toolbar class="fixed-header" color="primary">
+<mat-toolbar class="fixed-header" color="primary" style="padding: 0 55px;">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
     </button>
     <a class="material-nav-link" routerLink="/">
-        <span>KShopings</span>
+        <mat-icon class="logo-icon">spa</mat-icon>        
+        <span class="nav-logo-icon">KShopings</span>
     </a>
-    <a class="material-nav-link" routerLink="shopping-cart">
+    <a class="material-nav-link nav-cart-icon" routerLink="shopping-cart">
         <span>
             <div 
                 matBadge="{{cart.totalItemsCount }}"
@@ -108,13 +109,17 @@
                 class="demo-section" 
                 matBadgeColor="accent"
                 *ngIf="cart$ | async as cart"
-                >Shopping-cart
+                >
+                <mat-icon>shopping_cart</mat-icon>
             </div>
         </span>
     </a>
+    
+    <span class="example-spacer"></span>
 
     <span class="material-nav-link" *ngIf="appUser; else anonymousUser" [matMenuTriggerFor]="menu" class="material-nav-link">
-        {{(appUser.name)? appUser.name: "username"}} 
+        <mat-icon>person</mat-icon>
+        {{(appUser.name)? appUser.name: "username"}}         
         <mat-icon class="menu-icon">expand_more</mat-icon>
     </span>
     <mat-menu id="nav-menu" #menu="matMenu">
@@ -131,19 +136,9 @@
         </ng-container>
         <button mat-menu-item (click)="logout()">Log Out</button>
     </mat-menu>
-    <span class="material-nav-link">
-        <ng-template #anonymousUser>
+    <ng-template #anonymousUser class="material-nav-link">
         <a routerLink="/sign-in">Sign In</a>
-    </ng-template></span>
-
-    <span class="example-spacer"></span>
-
-    <button mat-icon-button class="example-icon favorite-icon material-nav-link" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon material-nav-link" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-    </button>
+    </ng-template>
 </mat-toolbar>
 
 

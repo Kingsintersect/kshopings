@@ -14,7 +14,7 @@ import { SnackbarService } from './services/helpers/snackbar.service';
 import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
-import { UserService } from './services/user.service';
+import { UserService } from '../membership/services/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -25,19 +25,25 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductCardComponent,
     ProductQuantityComponent,
   ],
-  exports: [
-    ProductFilterComponent,
-    ProductCardComponent,
-    ProductQuantityComponent,
-  ],
   imports: [
     CommonModule,
     AppRoutingModule,
-    
-    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
     NgbModule,
+  ],
+  exports: [
+    CommonModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    NgbModule,    
+    
+    ProductFilterComponent,
+    ProductCardComponent,
+    ProductQuantityComponent,
   ],
   providers: [
     AuthService,

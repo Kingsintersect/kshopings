@@ -1,8 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from 'app/app-routing.module';
-import { MaterialModule } from 'app/material.module';
 import { SheardModule } from 'sheard/sheard.module';
 
 import { CheckOutComponent } from './components/check-out/check-out.component';
@@ -27,12 +24,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     
   ],
   imports: [
-    CommonModule,
-    
-    AppRoutingModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
+    CommonModule,    
     SheardModule,
   ],
   exports: [

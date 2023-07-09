@@ -2,7 +2,7 @@ import { inject } from "@angular/core";
 import { ActivatedRouteSnapshot, Router, RouterState, RouterStateSnapshot } from "@angular/router";
 import { AuthService } from "sheard/services/auth.service";
 import { map, catchError, of } from "rxjs";
-import { UserService } from "sheard/services/user.service";
+import { UserService } from "app/membership/services/user.service";
 
 export const authGuard = () => {
     const auth = inject(AuthService);

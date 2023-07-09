@@ -2,7 +2,7 @@
 <div class="row col-10" *ngIf="cart$ | async as cart">
     <p>
         You Have {{cart.totalItemsCount}} items in your shopping cart
-        <button *ngIf="cart.items.length" mat-raised-button color="accent" (click)="clearCart()">Clear Shopping Cart</button>
+        <button *ngIf="cart.items.length" mat-raised-button color="accent" (click)="clearCart()">Clear Cart<mat-icon>remove_shopping_cart</mat-icon></button>
     </p>
 
     <table class="table">
@@ -37,6 +37,9 @@
         </tfoot>
     </table>
     <div class="d-flex justify-content-end" *ngIf="cart.items.length">
-        <a routerLink="/check-out" mat-raised-button color="primary">CheckOut</a>
+        <a routerLink="/check-out" mat-raised-button color="primary">
+            CheckOut
+            <mat-icon>shopping_cart_checkout</mat-icon>
+        </a>
     </div>
 </div>

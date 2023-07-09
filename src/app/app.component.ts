@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'sheard/services/auth.service';
 import { Router, UrlTree } from '@angular/router';
-import { UserService } from 'sheard/services/user.service';
+import { UserService } from 'app/membership/services/user.service';
 
 @Component({
   selector: 'app-root',

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { ShoppingCart } from '../../../shopping/model/shopping-cart';
 import { AuthService } from 'sheard/services/auth.service';
 import { ShoppingCartService } from 'sheard/services/shopping-cart.service';
-import { UserService } from 'sheard/services/user.service';
+import { UserService } from 'app/membership/services/user.service';
 
 @Component({
   selector: 'bs-navbar',
