@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { MyOrdersComponent } from './components/my-orders/my-orders.component';
-import { ProductsComponent } from './components/products/products.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { HomeComponent } from './core/components/home/home.component';
+import { SignUpComponent } from './membership/components/sign-up/sign-up.component';
 import { AdminOrdersComponent } from './admin/component/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/component/admin-products/admin-products.component';
-import { CheckOutComponent } from './components/check-out/check-out.component';
-import { OrderSuccessComponent } from './components/order-success/order-success.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { AuthGuard } from './services/auth-guard.service';
-import { AdminAuthGuard } from './services/admin-auth-guard.service';
+import { CheckOutComponent } from './shopping/components/check-out/check-out.component';
+import { SignInComponent } from './membership/components/sign-in/sign-in.component';
+import { AuthGuard } from 'sheard/services/auth-guard.service';
+import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 import { adminAuthGuard, authGuard } from './functions/auth.guard';
 import { ProductFormComponent } from './admin/component/product-form/product-form.component';
+import { MyOrdersComponent } from './shopping/components/my-orders/my-orders.component';
+import { OrderSuccessComponent } from './shopping/components/order-success/order-success.component';
+import { ProductsComponent } from './shopping/components/products/products.component';
+import { ShoppingCartComponent } from './shopping/components/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   

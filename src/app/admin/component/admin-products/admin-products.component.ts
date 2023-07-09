@@ -4,10 +4,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { ConfirmDeleteComponent } from 'app/core/components/dialogs/confirm-delete/confirm-delete.component';
 import { Subscription } from 'rxjs';
-import { ConfirmDeleteComponent } from 'src/app/components/dialogs/confirm-delete/confirm-delete.component';
-import { Product } from 'src/app/model/product';
-import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'sheard/model/product';
+import { ProductService } from 'sheard/services/product.service';
 
 @Component({
   selector: 'app-admin-products',

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { DocumentData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Order } from 'src/app/model/order';
-import { OrderService } from 'src/app/services/order.service';
+import { OrderService } from 'sheard/services/order.service';
 
 @Component({
   selector: 'app-admin-orders',

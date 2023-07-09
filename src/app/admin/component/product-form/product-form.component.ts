@@ -1,12 +1,10 @@
 import { Component, Input, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryService } from 'src/app/services/category.service';
-import { ProductService } from 'src/app/services/product.service';
+import { CategoryService } from 'sheard/services/category.service';
+import { ProductService } from 'sheard/services/product.service';
 import { take } from "rxjs";
 // import { CustomFormsModule, CustomValidators } from 'ng2-validation'
-import { DocumentSnapshot, DocumentData } from '@angular/fire/firestore';
-
 
 @Component({
   selector: 'app-product-form',

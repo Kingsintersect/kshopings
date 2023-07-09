@@ -1,0 +1,47 @@
+.dropdown-toggle, #logout{
+    cursor: pointer;
+}
+
+.fixed-header {
+    // background-color: lightgray;
+    position:fixed;
+    position:-webkit-sticky; /* For macOS/iOS Safari */;
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 10000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+
+
+// material stylings
+.example-spacer {
+    flex: 1 1 auto;
+}
+.navbar-link {
+    padding: 0 15px;
+    height: 100%;
+    line-height: 60px;
+}
+.navbar-link:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.material-nav-link{
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 10px;
+    margin: 0 5px;
+    color: unset;
+}
+.material-nav-link:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#nav-menu{
+    z-index: 1000000;
+}
+.menu-icon {
+    top: 4px;
+    position: relative;
+}
+a{
+    color: unset;
+}
