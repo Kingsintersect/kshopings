@@ -1,43 +1,37 @@
 <section class="text-center">
-    <div class="form-signin w-25 m-auto">
-        <form [formGroup]="loginForm" (ngSubmit)="signIn()">
-        <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-    
-        <div class="form-floating">
-            <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
-            <p class="error" *ngIf="email?.errors?.['email']">
-                Please enter a correct email format
-            </p>
-        </div>
-        <div class="form-floating">
-            <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-            <p class="error" *ngIf="password?.errors?.['required']">
-                Password is requried
-            </p>
-        </div>
-    
-        <div class="checkbox mb-3">
-            <label>
-            <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-        <span>New to our platform? <a routerLink="/sign-up">Sign Up!</a></span>
-        <hr>
-        <button class="w-100 btn btn-lg btn-danger" (click)="googleLogin()">Google Sign In</button>
-        <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2023</p>
-        </form>
+    <div class="form-signin w-50 m-auto p-5 mat-elevation-z5">
+        <form [formGroup]="signInForm" class="example-form" (ngSubmit)="signIn()">
+            <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher"
+                    placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="email!.hasError('email') && !email!.hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="email!.hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field class="example-full-width">
+                <input matInput type="password" formControlName="password" placeholder="Strong Password">
+                <mat-error *ngIf="password!.hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <section class="example-section">
+                <mat-checkbox class="example-margin" formControlName="remember"value=" remember">Remeber Me</mat-checkbox>
+            </section>
+
+            <button mat-raised-button color="primary" type="submit">Sign In</button>
+            <p class="pt-2">
+                <span>New to our platform? <a routerLink="/sign-up">Sign Up!</a></span>
+            </p>            
+            <hr>
+            <button mat-raised-button color="accent" (click)="googleLogin()">Google Sign In</button>
+        </form>          
     </div>
 </section>
-
-
-<!-- <mat-form-field>
-    <mat-label>Enter your password</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-  </mat-form-field> -->

@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
     exports: [
@@ -43,6 +44,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MatSnackBarModule,
         MatDialogModule,
         MatBadgeModule,
+        MatCheckboxModule,
     ]
 })
 

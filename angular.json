@@ -104,11 +104,8 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
-            "prerender": false,
-            "ssr": false,
-            "browserTarget": "kshopings:build:production",
-            "firebaseProject": "kshopings",
-            "firebaseHostingSite": "kshopings"
+            "version": 2,
+            "browserTarget": "kshopings:build:production"
           }
         }
       }

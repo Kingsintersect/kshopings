@@ -1,57 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Firestore, doc, docData, setDoc, updateDoc } from '@angular/fire/firestore';
-import { Observable, from, of, switchMap } from 'rxjs';
 import { User } from '@angular/fire/auth';
+import { doc, docData, Firestore, updateDoc } from '@angular/fire/firestore';
+import * as firebase from 'firebase/auth';
+import { from, Observable } from 'rxjs';
+
 import { AppUser } from '../model/app-user';
-import { AuthService } from 'sheard/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  get currentUserprofile$(): Observable<AppUser | null> {
-    return this.auth.currentUser$
-      .pipe(
-        switchMap(user => {
-          if(!user?.id) return of(null)
+  constructor(private fs: Firestore) { }
 
-          const ref = doc(this.fs, 'users', user?.id);
-          return docData(ref) as Observable<AppUser>;
-        })
-      )
-  }
-  get(uid: string){
-    const ref = doc(this.fs, 'users', uid);
-    return docData(ref) as Observable<AppUser>;
-  }
-
-  constructor(private auth: AuthService, private fs: Firestore) { }
-
-  /**
-   * TO BE USED DURING SIGN UP TO CREATE USER DOCUMENT
-   */
-  saveAtSignUp(user:User) {
-    const ref = doc(this.fs, 'users', user?.uid)
-    return from(setDoc(ref, {
+  save(user: firebase.User) {
+    const ref = doc(this.fs, 'users', user?.uid);
+    return from(updateDoc(ref, {
       name: user.displayName,
       email: user.email
     }));
   }
 
-  /**
-   * TO BE USED DURING SIGN UP TO CREATE USER DOCUMENT
-   */
-  // addUser(user: AppUser): Observable<any>{
-  //   const ref = doc(this.fs, 'users', user?.uid)
-  //   return from(setDoc(ref, user));
-  // }
-
-  /**
-   * TO UPDATE USER
-   */
-  // updateUser(user: AppUser): Observable<any>{
-  //   const ref = doc(this.fs, 'users', user?.uid)
-  //   return from(updateDoc(ref, { ...user }));
-  // }
+  get(uid: string){
+    const ref = doc(this.fs, 'users', uid);
+    return docData(ref) as Observable<AppUser>;
+  }
 }

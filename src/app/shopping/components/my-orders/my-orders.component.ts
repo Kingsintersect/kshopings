@@ -13,7 +13,7 @@ export class MyOrdersComponent {
   orders$!: Observable<any[]>
 
   constructor(private auth: AuthService, private oderservice: OrderService){
-    this.orders$ = this.auth.currentUser$.pipe(
+    this.orders$ = this.auth.user$.pipe(
       switchMap(u => this.oderservice.getOrdersByUser(u!.uid))
     )
   }

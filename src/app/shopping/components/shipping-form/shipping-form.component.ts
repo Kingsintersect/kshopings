@@ -50,7 +50,7 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   }
   
   async ngOnInit() {
-    this.userSubscription = this.auth.currentUser$.subscribe(user => {
+    this.userSubscription = this.auth.user$.subscribe(user => {
         // console.log(user.);
         this.userId= user!.uid
         // this.userId = "RyJVd0RC7FObTyAqscOMOjqGv4V2"

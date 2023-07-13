@@ -22,17 +22,15 @@ export class BsNavbarComponent implements OnInit {
     private auth: AuthService, 
     private router: Router, 
     public toast: HotToastService,
-    private cartService: ShoppingCartService) {
-    // userService.currentUserprofile$.subscribe(appUser => this.appUser = appUser!)
-    // auth.appUser$.subscribe(appUser => this.appUser = appUser)
-  }
+    private cartService: ShoppingCartService) {}
+  
   async ngOnInit() {
-    this.auth.currentUser$.subscribe(user => this.appUser = user!);
+    this.auth.appUser$.subscribe(appUser => this.appUser = appUser!);
     this.cart$ = await this.cartService.getCart();
   }
 
   logout(){
-    this.auth.logout().pipe(
+    this.auth.signOut().pipe(
       this.toast.observe({
         loading: "Loading...",
         success: "You successfuly Logged out!",

@@ -1,5 +1,6 @@
 
 <mat-toolbar class="fixed-header" color="primary" style="padding: 0 55px;">
+    <!-- left section -->
     <a class="material-nav-link" routerLink="/">
         <mat-icon class="logo-icon">spa</mat-icon>        
         <span class="nav-logo-icon">KShopings</span>
@@ -19,27 +20,34 @@
     </a>
     
     <span class="example-spacer"></span>
+    <!-- right section -->
 
-    <span class="material-nav-link" *ngIf="appUser; else anonymousUser" [matMenuTriggerFor]="menu" class="material-nav-link">
-        <mat-icon>person</mat-icon>
-        {{(appUser.name)? appUser.name: "username"}}         
-        <mat-icon class="menu-icon">expand_more</mat-icon>
-    </span>
-    <mat-menu id="nav-menu" #menu="matMenu">
-        <a routerLink="my/orders">
-            <button mat-menu-item>My Orders</button>
-        </a>
-        <ng-container *ngIf="appUser.isAdmin">
-            <a routerLink="admin/orders">
-                <button mat-menu-item>Manage Orders</button>
+    <ng-container *ngIf="appUser; else anonymousUser">
+        <button mat-button [matMenuTriggerFor]="menu" class="material-nav-link">
+            <mat-icon>person</mat-icon>
+            {{(appUser.name)? appUser.name: "Anonymous"}}         
+            <mat-icon class="menu-icon">expand_more</mat-icon>
+        </button>       
+    
+        <mat-menu id="nav-menu" #menu="matMenu">
+            <a routerLink="my/orders">
+                <button mat-menu-item>My Orders</button>
             </a>
-            <a routerLink="admin/products">
-                <button mat-menu-item>Manage Products</button>
-            </a>
-        </ng-container>
-        <button mat-menu-item (click)="logout()">Log Out</button>
-    </mat-menu>
+            <ng-container *ngIf="appUser.isAdmin">
+                <a routerLink="admin/orders">
+                    <button mat-menu-item>Manage Orders</button>
+                </a>
+                <a routerLink="admin/products">
+                    <button mat-menu-item>Manage Products</button>
+                </a>
+            </ng-container>
+            <button mat-menu-item (click)="logout()">Log Out</button>
+        </mat-menu>
+    </ng-container>
     <ng-template #anonymousUser class="material-nav-link">
-        <a routerLink="/sign-in">Sign In</a>
+        <button mat-button routerLink="/sign-in">
+            <mat-icon>login</mat-icon>
+            Sign In
+        </button>
     </ng-template>
 </mat-toolbar>

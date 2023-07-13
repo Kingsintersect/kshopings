@@ -15,6 +15,7 @@ import { CoreModule } from './core/core.module';
 import { MaterialModule } from './material.module';
 import { MembershipModule } from './membership/membership.module';
 import { ShoppingModule } from './shopping/shopping.module';
+import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { ShoppingModule } from './shopping/shopping.module';
         provideAuth(() => getAuth()),
         provideDatabase(() => getDatabase()),
         provideFirestore(() => getFirestore()),
+        provideMessaging(() => getMessaging()),
     ]
 })
 export class AppModule { }

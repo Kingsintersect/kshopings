@@ -25,13 +25,14 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 .material-nav-link{
-    cursor: pointer;
-    display: inline-block;
+    // cursor: pointer;
+    // display: inline-block;
     padding: 0 10px;
     margin: 0 5px;
     color: unset;
 }
 .material-nav-link:hover {
+    background-color: unset !important;
     color: rgba(255, 255, 255, 0.6);
 }
 

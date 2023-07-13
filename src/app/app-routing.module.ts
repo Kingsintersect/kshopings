@@ -6,15 +6,13 @@ import { AdminOrdersComponent } from './admin/component/admin-orders/admin-order
 import { AdminProductsComponent } from './admin/component/admin-products/admin-products.component';
 import { CheckOutComponent } from './shopping/components/check-out/check-out.component';
 import { SignInComponent } from './membership/components/sign-in/sign-in.component';
-import { AuthGuard } from 'sheard/services/auth-guard.service';
-import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
-import { adminAuthGuard, authGuard } from './functions/auth.guard';
 import { ProductFormComponent } from './admin/component/product-form/product-form.component';
 import { MyOrdersComponent } from './shopping/components/my-orders/my-orders.component';
 import { OrderSuccessComponent } from './shopping/components/order-success/order-success.component';
 import { ProductsComponent } from './shopping/components/products/products.component';
 import { ShoppingCartComponent } from './shopping/components/shopping-cart/shopping-cart.component';
-
+import { AuthGuard } from "sheard/services/auth-guard.service";
+import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 const routes: Routes = [
   
     // ANONYMOUS USERS
@@ -32,38 +30,38 @@ const routes: Routes = [
   { 
     path: 'check-out', 
     component: CheckOutComponent, 
-    // canActivate: [authGuard],
+    canActivate: [AuthGuard],
   },
   { 
     path: 'my/orders', component: MyOrdersComponent,
-    // canActivate: [authGuard],
+    canActivate: [AuthGuard],
   },
   { 
     path: 'order-success/:id', 
     component: OrderSuccessComponent, 
-    // canActivate: [authGuard],
+    canActivate: [AuthGuard],
   }, 
   
   // ADMIN USERS
   { 
     path: 'admin/products/new', 
     component: ProductFormComponent, 
-    // canActivate: [authGuard, adminAuthGuard] 
+    canActivate: [AuthGuard, AdminAuthGuard] 
   },
   { 
     path: 'admin/products/:id', 
     component: ProductFormComponent, 
-    // canActivate: [authGuard, adminAuthGuard] 
+    canActivate: [AuthGuard, AdminAuthGuard] 
   },
   { 
     path: 'admin/products', 
     component: AdminProductsComponent, 
-    // canActivate: [authGuard, adminAuthGuard] 
+    canActivate: [AuthGuard, AdminAuthGuard] 
   },
   { 
     path: 'admin/orders', 
     component: AdminOrdersComponent, 
-    // canActivate: [authGuard, adminAuthGuard] 
+    canActivate: [AuthGuard, AdminAuthGuard] 
   },
 ];
 
